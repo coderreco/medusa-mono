@@ -20,7 +20,7 @@ export default defineConfig({
       | "server",
   },
   admin: {
-    backendUrl: "https://munchies.medusajs.app",
+    backendUrl: process.env.BACKEND_URL,
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     // backendUrl: "http://localhost:9000",
   },
