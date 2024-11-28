@@ -2,6 +2,8 @@ import { SubscriberArgs, SubscriberConfig } from "@medusajs/framework";
 import { Modules } from "@medusajs/framework/utils";
 import { Resend } from "resend";
 
+const backendUrl = process.env.BACKEND_URL;
+
 export default async function subscribeNewsletterHandler({
   event,
   container,
@@ -12,7 +14,7 @@ export default async function subscribeNewsletterHandler({
     const customerModuleService = container.resolve(Modules.CUSTOMER);
 
     const customer = await customerModuleService.retrieveCustomer(
-      event.data.id,
+      event.data.id
     );
 
     // const audiences = await resend.audiences.list();
@@ -29,14 +31,14 @@ export default async function subscribeNewsletterHandler({
     // if (error) throw new Error("Error subscribing email");
 
     const response = await fetch(
-      "https://munchies.medusajs.app/store/email/welcome/" + event.data.id,
+      backendUrl + "/store/email/welcome/" + event.data.id,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "x-publishable-api-key": process.env.MEDUSA_PUBLISHABLE_KEY,
         },
-      },
+      }
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
