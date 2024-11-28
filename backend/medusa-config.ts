@@ -32,7 +32,7 @@ export default defineConfig({
         project_id: process.env.SANITY_PROJECT_ID,
         api_version: new Date().toISOString().split("T")[0],
         dataset: "production",
-        studio_url: process.env.STORE_URL + "/cms",
+        studio_url: "https://medusa-mono.vercel.app/cms",
         type_map: {
           collection: "collection",
           category: "category",
