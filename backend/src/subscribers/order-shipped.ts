@@ -1,6 +1,6 @@
 import type { SubscriberArgs, SubscriberConfig } from "@medusajs/medusa";
 
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = process.env.MEDUSA_BACKEND_URL;
 
 export default async function orderShippedHandler({
   event,

@@ -2,7 +2,7 @@ import { SubscriberArgs, SubscriberConfig } from "@medusajs/framework";
 import { Modules } from "@medusajs/framework/utils";
 import { Resend } from "resend";
 
-const backendUrl = process.env.BACKEND_URL;
+const backendUrl = process.env.MEDUSA_BACKEND_URL;
 
 export default async function subscribeNewsletterHandler({
   event,
