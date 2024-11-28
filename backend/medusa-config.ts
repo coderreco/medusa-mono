@@ -22,6 +22,7 @@ export default defineConfig({
   admin: {
     backendUrl: process.env.MEDUSA_BACKEND_URL,
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
+    storefrontUrl: "https://medusa-mono.vercel.app",
     // backendUrl: "http://localhost:9000",
   },
   modules: [

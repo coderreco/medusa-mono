@@ -1,6 +1,6 @@
 import Medusa from "@medusajs/js-sdk";
 
-export const backendUrl = process.env.MEDUSA_BACKEND_URL;
+export const backendUrl = "https://server-production-34b0.up.railway.app";
 
 export const sdk = new Medusa({
   baseUrl: backendUrl,
