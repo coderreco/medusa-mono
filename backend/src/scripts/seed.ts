@@ -23,7 +23,7 @@ import {
 import {
   ContainerRegistrationKeys,
   Modules,
-  ProductStatus
+  ProductStatus,
 } from "@medusajs/framework/utils";
 
 export default async function seedDemoData({ container }: ExecArgs) {
@@ -40,7 +40,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
     Modules.STORE
   );
 
-  const countries = ["gb", "de", "dk", "se", "fr", "es", "it"];
+  const countries = ["gb", "de", "dk", "se", "fr", "es", "it", "us", "ca"];
 
   logger.info("Seeding store data...");
   const [store] = await storeModuleService.listStores();
@@ -71,10 +71,13 @@ export default async function seedDemoData({ container }: ExecArgs) {
         supported_currencies: [
           {
             currency_code: "eur",
-            is_default: true,
           },
           {
             currency_code: "usd",
+          },
+          {
+            currency_code: "cad",
+            is_default: true,
           },
         ],
         default_sales_channel_id: defaultSalesChannel[0].id,
@@ -85,6 +88,12 @@ export default async function seedDemoData({ container }: ExecArgs) {
   const { result: regionResult } = await createRegionsWorkflow(container).run({
     input: {
       regions: [
+        {
+          name: "Canada",
+          currency_code: "cad",
+          countries,
+          payment_providers: ["pp_system_default"],
+        },
         {
           name: "Europe",
           currency_code: "eur",
@@ -112,10 +121,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
     input: {
       locations: [
         {
-          name: "European Warehouse",
+          name: "Tofino Warehouse",
           address: {
-            city: "Copenhagen",
-            country_code: "DK",
+            city: "Tofino",
+            country_code: "CA",
             address_1: "",
           },
         },
@@ -148,38 +157,14 @@ export default async function seedDemoData({ container }: ExecArgs) {
   const shippingProfile = shippingProfileResult[0];
 
   const fulfillmentSet = await fulfillmentModuleService.createFulfillmentSets({
-    name: "European Warehouse delivery",
+    name: "Canada Warehouse delivery",
     type: "shipping",
     service_zones: [
       {
-        name: "Europe",
+        name: "Canada",
         geo_zones: [
           {
-            country_code: "gb",
-            type: "country",
-          },
-          {
-            country_code: "de",
-            type: "country",
-          },
-          {
-            country_code: "dk",
-            type: "country",
-          },
-          {
-            country_code: "se",
-            type: "country",
-          },
-          {
-            country_code: "fr",
-            type: "country",
-          },
-          {
-            country_code: "es",
-            type: "country",
-          },
-          {
-            country_code: "it",
+            country_code: "ca",
             type: "country",
           },
         ],
@@ -211,11 +196,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         },
         prices: [
           {
-            currency_code: "usd",
-            amount: 10,
-          },
-          {
-            currency_code: "eur",
+            currency_code: "cad",
             amount: 10,
           },
           {
@@ -249,11 +230,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         },
         prices: [
           {
-            currency_code: "usd",
-            amount: 10,
-          },
-          {
-            currency_code: "eur",
+            currency_code: "cad",
             amount: 10,
           },
           {

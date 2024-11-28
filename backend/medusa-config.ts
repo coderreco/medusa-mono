@@ -14,9 +14,14 @@ export default defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     },
+    workerMode: process.env.MEDUSA_WORKER_MODE as
+      | "shared"
+      | "worker"
+      | "server",
   },
   admin: {
     backendUrl: "https://munchies.medusajs.app",
+    disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     // backendUrl: "http://localhost:9000",
   },
   modules: [
