@@ -4,14 +4,14 @@ import { Resend } from "resend";
 
 export type ReactEmailProps<T> = React.FC<Readonly<T>>;
 
-const companyName = "munchies";
-const email = "munchies@medusajs.dev";
+const companyName = "Drift MFG";
+const email = "drift@cleaningwebsitetemplates.com";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(
   payload: Omit<CreateEmailOptions, "from">,
-  options?: CreateEmailRequestOptions,
+  options?: CreateEmailRequestOptions
 ) {
   return await resend.emails.send(
     {
@@ -19,6 +19,6 @@ export async function sendEmail(
       react: null,
       ...payload,
     },
-    options,
+    options
   );
 }
