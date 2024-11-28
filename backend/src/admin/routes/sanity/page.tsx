@@ -16,6 +16,7 @@ const SanityRoute = () => {
   const { workflow_executions, refetch } = useSanitySyncs();
 
   const handleSync = async () => {
+    toast("Triggering sync...");
     try {
       await mutateAsync({});
       toast.success(`Sync triggered.`);

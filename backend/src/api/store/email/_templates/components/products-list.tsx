@@ -3,7 +3,7 @@ import { Column, Img, Row, Section, Text } from "@react-email/components";
 import { CtaButton } from "./button";
 import { bodySmall, titleSmall } from "./style";
 
-const storeUrl = "https://medusa-mono.vercel.app/";
+const storeUrl = "https://medusa-mono.vercel.app";
 
 export default function ProductsList({ products }: { products: ProductDTO[] }) {
   return (
