@@ -18,6 +18,7 @@ const SanityRoute = () => {
   const handleSync = async () => {
     toast("Triggering sync...");
     try {
+      // @ts-ignore
       await mutateAsync({});
       toast.success(`Sync triggered.`);
       refetch();

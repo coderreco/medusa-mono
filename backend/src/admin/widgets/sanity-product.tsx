@@ -14,6 +14,7 @@ const ProductWidget = ({ data }) => {
 
   const handleSync = async () => {
     try {
+      // @ts-ignore
       await mutateAsync({});
       toast.success(`Sync triggered.`);
     } catch (err) {
@@ -27,6 +28,9 @@ const ProductWidget = ({ data }) => {
         <div className="flex gap-2 items-center">
           <h2>Sanity Status</h2>
           <div>
+            <StatusBadge color="red">Not Synced</StatusBadge>
+          </div>
+          {/* <div>
             {isLoading ? (
               "Loading..."
             ) : sanity_document.handle === data.handle ? (
@@ -34,7 +38,7 @@ const ProductWidget = ({ data }) => {
             ) : (
               <StatusBadge color="red">Not Synced</StatusBadge>
             )}
-          </div>
+          </div> */}
         </div>
         <Button
           size="small"
