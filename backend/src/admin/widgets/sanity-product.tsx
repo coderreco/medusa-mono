@@ -30,15 +30,16 @@ const ProductWidget = ({ data }) => {
           <div>
             <StatusBadge color="red">Not Synced</StatusBadge>
           </div>
-          {/* <div>
+          <div>
             {isLoading ? (
               "Loading..."
-            ) : sanity_document.handle === data.handle ? (
+            ) : sanity_document.pathname?.current ===
+              "/products/" + data.handle ? (
               <StatusBadge color="green">Synced</StatusBadge>
             ) : (
               <StatusBadge color="red">Not Synced</StatusBadge>
             )}
-          </div> */}
+          </div>
         </div>
         <Button
           size="small"
