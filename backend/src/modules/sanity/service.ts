@@ -22,10 +22,10 @@ type SyncDocumentTypes =
 type SyncDocumentInputs<T> = T extends "product"
   ? ProductDTO
   : T extends "category"
-    ? ProductCategoryDTO
-    : T extends "collection"
-      ? ProductCollectionDTO
-      : never;
+  ? ProductCategoryDTO
+  : T extends "collection"
+  ? ProductCollectionDTO
+  : never;
 
 type SanityOptions = {
   api_token: string;
@@ -66,7 +66,7 @@ export default class SanityModuleService {
         [SyncDocumentTypes.CATEGORY]: "category",
         [SyncDocumentTypes.COLLECTION]: "collection",
       },
-      options.type_map || {},
+      options.type_map || {}
     );
 
     this.createTransformationMap = {
@@ -84,7 +84,7 @@ export default class SanityModuleService {
 
   async upsertSyncDocument<T extends SyncDocumentTypes>(
     type: T,
-    data: SyncDocumentInputs<T>,
+    data: SyncDocumentInputs<T>
   ) {
     const existing = await this.client.getDocument(data.id);
     if (existing) {
@@ -97,7 +97,7 @@ export default class SanityModuleService {
   async createSyncDocument<T extends SyncDocumentTypes>(
     type: T,
     data: SyncDocumentInputs<T>,
-    options?: FirstDocumentMutationOptions,
+    options?: FirstDocumentMutationOptions
   ) {
     const doc = this.createTransformationMap[type](data);
     return await this.client.create(doc, options);
@@ -105,7 +105,7 @@ export default class SanityModuleService {
 
   async updateSyncDocument<T extends SyncDocumentTypes>(
     type: T,
-    data: SyncDocumentInputs<T>,
+    data: SyncDocumentInputs<T>
   ) {
     const operations = this.updateTransformationMap[type](data);
     return await this.client.patch(data.id, operations).commit();
@@ -131,7 +131,7 @@ export default class SanityModuleService {
   async getStudioLink(
     type: string,
     id: string,
-    config: { explicit_type?: boolean } = {},
+    config: { explicit_type?: boolean } = {}
   ) {
     const resolvedType = config.explicit_type ? type : this.typeMap[type];
     if (!this.studioUrl) {
@@ -152,6 +152,7 @@ export default class SanityModuleService {
   private transformProductForUpdate = (product: ProductDTO) => {
     return {
       set: {
+        title: product.title,
         internalTitle: product.title,
         pathname: { _type: "slug", current: "/products/" + product.handle },
       },

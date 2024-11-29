@@ -28,9 +28,6 @@ const ProductWidget = ({ data }) => {
         <div className="flex gap-2 items-center">
           <h2>Sanity Status</h2>
           <div>
-            <StatusBadge color="red">Not Synced</StatusBadge>
-          </div>
-          <div>
             {isLoading ? (
               "Loading..."
             ) : sanity_document.pathname?.current ===
