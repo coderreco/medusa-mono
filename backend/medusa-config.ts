@@ -26,21 +26,21 @@ export default defineConfig({
     // backendUrl: "http://localhost:9000",
   },
   modules: [
-    // {
-    //   resolve: "./modules/sanity",
-    //   options: {
-    //     api_token: process.env.SANITY_API_TOKEN,
-    //     project_id: process.env.SANITY_PROJECT_ID,
-    //     api_version: new Date().toISOString().split("T")[0],
-    //     dataset: "production",
-    //     studio_url: "https://medusa-mono.vercel.app/cms",
-    //     type_map: {
-    //       collection: "collection",
-    //       category: "category",
-    //       product: "product",
-    //     },
-    //   },
-    // },
+    {
+      resolve: "./modules/sanity",
+      options: {
+        api_token: process.env.SANITY_API_TOKEN,
+        project_id: process.env.SANITY_PROJECT_ID,
+        api_version: new Date().toISOString().split("T")[0],
+        dataset: "production",
+        studio_url: "https://medusa-mono.vercel.app/cms",
+        type_map: {
+          collection: "collection",
+          category: "category",
+          product: "product",
+        },
+      },
+    },
     {
       resolve: "@medusajs/medusa/file",
       key: Modules.FILE,
