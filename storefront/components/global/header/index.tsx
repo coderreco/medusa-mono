@@ -23,7 +23,7 @@ export default function Header(props: {countryCode: string} & Header) {
               <img
                 alt="Mubchies logo"
                 className="my-[9px] h-[22px] w-fit lg:my-[10px] lg:h-9"
-                src="/images/logo.svg"
+                src="/images/finandfuel.webp"
               />
             </LocalizedLink>
           </div>

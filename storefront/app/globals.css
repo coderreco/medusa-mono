@@ -16,7 +16,8 @@
     --max-width: 1440px;
     --min-width: 320px;
     /* colors */
-    --background: #fff6e6;
+    /* --background: #fff6e6; */
+    --background: #1a1919;
     --accent: #49aab8;
     --accent-40: rgba(39, 237, 255, 0.4);
     --secondary: #f9e9df;
@@ -31,6 +32,10 @@
 
   .hero-asset {
     min-height: min(590px, calc(100vh - var(--header-height) - 1rem));
+  }
+
+  img {
+    @apply object-cover;
   }
 
   .newletter-text:-webkit-autofill {

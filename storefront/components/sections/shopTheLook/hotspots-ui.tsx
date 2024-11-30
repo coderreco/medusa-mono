@@ -42,7 +42,10 @@ export default function HotspotsUi({
     <div className="flex w-full flex-col items-stretch justify-start gap-xs lg:flex-row lg:gap-s">
       {image ? (
         <div className="relative w-full min-w-[63%] rounded-lg">
-          <SanityImage className="w-full rounded-lg" data={image} />
+          <SanityImage
+            className="w-full rounded-lg object-cover"
+            data={image}
+          />
           {productHotSpots?.map((hotSpot) => {
             return (
               <div
@@ -100,7 +103,7 @@ export default function HotspotsUi({
             {thumbnailUrl ? (
               <Image
                 alt={product.title}
-                className="aspect-square w-full rounded-lg"
+                className="aspect-square w-full rounded-lg object-cover"
                 height={450}
                 src={thumbnailUrl}
                 width={450}
@@ -158,7 +161,7 @@ export default function HotspotsUi({
               {thumbnailUrl ? (
                 <Image
                   alt={product?.title}
-                  className="aspect-square w-full max-w-[100px] rounded-lg border border-accent"
+                  className="aspect-square w-full max-w-[100px] rounded-lg border border-accent object-cover"
                   height={100}
                   src={thumbnailUrl}
                   width={100}
