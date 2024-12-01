@@ -13,6 +13,8 @@ import {getPtComponentId} from "@tinloof/sanity-web";
 import {PtLink} from "../pt.blocks/link";
 import Body from "./typography/body";
 import Heading from "./typography/heading";
+import urlBuilder from "@sanity/image-url";
+import {SanityImage} from "./sanity-image";
 
 export const RichText = ({
   value = [],
@@ -95,7 +97,20 @@ export const TextPageRichText = ({
     marks: {
       link: PtLink,
     },
-    types: {},
+    types: {
+      imageBlock: ({value}: any) => {
+        const src = urlBuilder(value) as unknown as string;
+        return (
+          src && (
+            <SanityImage
+              src={src}
+              alt={value.alt || ""}
+              className="w-full rounded"
+            />
+          )
+        );
+      },
+    },
   };
 
   return (
