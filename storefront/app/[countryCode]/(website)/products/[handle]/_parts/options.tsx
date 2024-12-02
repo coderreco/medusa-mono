@@ -29,7 +29,7 @@ export default function OptionsSelect({options}: Props) {
 
     return (
       <Select
-        className="w-fit"
+        className="w-fit capitalize"
         key={option.id}
         options={values}
         placeholder={activeOption}
